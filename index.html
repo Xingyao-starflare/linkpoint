@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkPoint - Global Client Connection Solutions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #333;
+            background: linear-gradient(to bottom, #f0f8fc, #ffffff);
+        }
+        
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #d4e9f0;
+            padding: 1rem 2rem;
+        }
+        
+        .header-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: #1e3a5f;
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            width: 2rem;
+            height: 2rem;
+            background: linear-gradient(135deg, #4a90e2, #1e3a5f);
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        nav a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #4a90e2;
+        }
+        
+        .cta-button {
+            padding: 0.75rem 1.5rem;
+            background: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+        
+        .cta-button:hover {
+            background: #2563eb;
+            box-shadow: 0 10px 25px rgba(74, 144, 226, 0.3);
+        }
+        
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .hero {
+            padding: 5rem 1rem;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #1a202c;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            color: #666;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+        
+        .stat-item h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            color: #4a90e2;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-item p {
+            color: #666;
+            font-weight: 500;
+        }
+        
+        .section {
+            padding: 3rem 1rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-label {
+            color: #4a90e2;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .section h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #1a202c;
+        }
+        
+        .about-box {
+            background: white;
+            border-radius: 0.75rem;
+            padding: 2rem;
+            border: 1px solid #d4e9f0;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            border: 1px solid #d4e9f0;
+            transition: box-shadow 0.3s;
+        }
+        
+        .feature-card:hover {
+            box-shadow: 0 4px 12px rgba(74, 144, 226, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #1a202c;
+        }
+        
+        .feature-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #4a90e2, #2563eb);
+            color: white;
+            border-radius: 0.75rem;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin: 3rem 1rem;
+        }
+        
+        .cta-section h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .cta-section button {
+            padding: 0.75rem 2rem;
+            background: white;
+            color: #4a90e2;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .cta-section button:hover {
+            background: #f0f8fc;
+        }
+        
+        footer {
+            background: #1a202c;
+            color: white;
+            padding: 3rem 1rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h4 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: #4a90e2;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 2rem;
+            text-align: center;
+            color: #aaa;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            nav {
+                gap: 1rem;
+            }
+            
+            nav a {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="/" class="logo">
+                <div class="logo-icon">LP</div>
+                <span>LinkPoint</span>
+            </a>
+            <nav>
+                <a href="/">Home</a>
+                <a href="/about.html">About</a>
+                <a href="#services">Services</a>
+                <a href="#contact">Contact</a>
+                <button class="cta-button">Get Consultation</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>The Right Clients.<br>The Right Connections.<br>The Right Results</h1>
+            <p>Bringing you the clients that matter, wherever you are</p>
+            <button class="cta-button">Contact Us</button>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stat-item">
+            <h3>500+</h3>
+            <p>Happy Clients</p>
+        </div>
+        <div class="stat-item">
+            <h3>1000+</h3>
+            <p>Projects Completed</p>
+        </div>
+        <div class="stat-item">
+            <h3>5+</h3>
+            <p>Years Of Experience</p>
+        </div>
+        <div class="stat-item">
+            <h3>50+</h3>
+            <p>Team Members</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <div class="section-label">About Us</div>
+                <h2>Your Trusted Partner for Global Client Connections</h2>
+            </div>
+            <div class="about-box">
+                <p>At <strong>LinkPoint</strong>, we specialize in <strong>seamless outsourcing solutions</strong> that connect businesses with the <strong>right clients worldwide</strong>. Whether you need <strong>high-quality customer engagement, business development, or dedicated call center support</strong>, our expert team ensures real results.</p>
+                <br>
+                <p>With a diverse and skilled team based across the US, Europe, and Asia, we provide reliable client acquisition and business support services tailored to any industry. Our approach is built on <strong>trust, efficiency, and results-driven solutions</strong>, helping businesses <strong>expand, connect, and grow globally</strong>.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⏰</div>
+                    <h3>24/7 Dedicated Support</h3>
+                    <p>Ensuring your business never misses an opportunity.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Expert Team Across Four Countries</h3>
+                    <p>A global workforce delivering excellence.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Seamless Client Connections</h3>
+                    <p>Helping businesses reach new markets effortlessly.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3>Tailored Customer Profile</h3>
+                    <p>Outsourcing designed around your needs.</p>
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <a href="/about.html" style="display: inline-block; padding: 0.75rem 1.5rem; background: #4a90e2; color: white; text-decoration: none; border-radius: 0.5rem; font-weight: 600;">Learn More About Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section">
+        <div class="container">
+            <div class="section-title">
+                <div class="section-label">Services</div>
+                <h2>Services We Provide</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Strategic Client Engagement</h3>
+                    <p>Turn every incoming inquiry into sales opportunities. Our expert team handles calls from multiple channels.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Targeted Business Outreach</h3>
+                    <p>Proactively reach out to potential clients to promote your products or services.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤝</div>
+                    <h3>B2B Business Development</h3>
+                    <p>Specializing in B2B interactions, we help businesses connect with other businesses effectively.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💼</div>
+                    <h3>Consumer Engagement & Sales</h3>
+                    <p>Engage directly with consumers to promote your offerings and drive sales.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="cta-section">
+        <div class="container">
+            <h2>Get A Consultation Now!</h2>
+            <p>Ready to connect with global clients and grow your business?</p>
+            <button>Contact Us</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>LP LinkPoint</h4>
+                <p>Your trusted partner for global client connections and outsourcing solutions.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Useful Links</h4>
+                <ul>
+                    <li><a href="#">Terms and Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about.html">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p><strong>Email:</strong> klaycklay0102@gmail.com</p>
+                <p><strong>Address:</strong> Kneza Mihaila 33, Belgrade, Serbia</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 LINKPOINT DOO BEOGRAD. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
